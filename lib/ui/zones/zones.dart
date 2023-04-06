@@ -29,7 +29,6 @@ class _DNSZonesState extends State<DNSZones> {
                 List<Widget> widgetList;
 
                 if (snapshot.hasData) {
-                  widgetList = [];
                   widgetList = dnsZoneTiles(snapshot, context);
 
                   widgetList.add(Container(

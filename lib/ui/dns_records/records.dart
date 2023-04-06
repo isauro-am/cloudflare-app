@@ -1,7 +1,7 @@
-import 'package:cloudflare/domain/models/dns_record.dart';
 import 'package:flutter/material.dart';
 
 import '../../data/secure_storage.dart';
+import '../../domain/dns_records/dns_records_data.dart';
 import '../../domain/models/dns_zone.dart';
 import '../../services/services.dart';
 import '../drawer/drawer.dart';
@@ -48,7 +48,7 @@ class _DnsRecordViewState extends State<DnsRecordView> {
         body: SingleChildScrollView(
           child: Center(
             child: FutureBuilder<dynamic>(
-              future: getProjectDetails(),
+              future: tokenDefined(),
               builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
                 List<Widget> widgetList;
 
@@ -99,40 +99,3 @@ class _DnsRecordViewState extends State<DnsRecordView> {
   }
 }
 
-
-dnsRecordTiles(DnsZone activeZoneModel ) {
-  List<Widget> widgetList = <Widget>[];
-
-  for (DnsRecord item in activeZoneModel.dnsRecords) {
-    widgetList.add(
-      ListTile(
-        leading: Text(item.type),
-        title: Text(item.name),
-        subtitle: (item.type == 'MX')
-            ? Text("${item.name} ${item.content}")
-            : Text(item.content),
-        onTap: () async {},
-      ),
-    );
-  }
-
-  if (widgetList.isEmpty) {
-    return [
-      const Icon(
-        Icons.forward,
-        color: Colors.red,
-        size: 60,
-      ),
-      const Padding(
-        padding: EdgeInsets.only(top: 16),
-        child: Text('Not exist any Records for this DNS Zone'),
-      )
-    ];
-  } else {
-    return widgetList;
-  }
-}
-
-Future getProjectDetails() async {
-  return await tokenDefined();
-}
