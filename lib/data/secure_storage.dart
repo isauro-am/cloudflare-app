@@ -1,17 +1,7 @@
+
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-class Endpoints {
-  String host = "https://api.cloudflare.com";
-
-  String version = "client/v4";
-
-  String get zones => "$host/$version/zones";
-
-  dnsRecords(zoneIdentifier){
-    return "$zones/$zoneIdentifier/dns_records";
-  }
-
-}
+StoreSecureData sotoreSecureData = StoreSecureData();
 
 class SecureUserData {
   static const storage = FlutterSecureStorage();
@@ -40,5 +30,20 @@ class StoreSecureData {
 
   delData(key) async {
     await SecureUserData.deletValue(key);
+  }
+}
+
+/// The function checks if a token is defined in secure data storage and returns a boolean value
+/// accordingly.
+///
+/// Returns:
+///   The function `tokenDefined()` is returning a boolean value (`true` or `false`) based on whether
+/// the token data is stored in the secure storage or not. If the token data is stored, it will return
+/// `true`, otherwise it will return `false`.
+tokenDefined() async {
+  if (await sotoreSecureData.getData("token") != null) {
+    return true;
+  } else {
+    return false;
   }
 }

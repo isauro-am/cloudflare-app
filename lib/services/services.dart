@@ -1,10 +1,9 @@
+import '../data/endpoints.dart';
 import '../ui/drawer/drawer.dart';
 import '../utils.dart';
-import 'request.dart';
-import 'secure.dart';
+import '../data/request.dart';
 
 // SecureStorage
-StoreSecureData sotoreSecureData = StoreSecureData();
 
 // Internet Requests
 HttpRequest httpRequest = HttpRequest();
@@ -17,7 +16,6 @@ PageRoutes pageRoutes = PageRoutes();
 
 
 // Colors
-CloudflareColors cloudflareColors = CloudflareColors();
 
 // Messages
 SnackBarMessages snackBarMessages = SnackBarMessages();

@@ -12,6 +12,7 @@ String dnsZoneToJson(DnsZone data) => json.encode(data.toJson());
 
 class DnsZone {
     DnsZone({
+        required this.status,
         required this.activatedOn,
         required this.createdOn,
         required this.developmentMode,
@@ -20,11 +21,13 @@ class DnsZone {
         required this.name,
         required this.originalDnshost,
         required this.originalNameServers,
+        required this.nameServers,
         required this.originalRegistrar,
     });
 
     List<DnsRecord> dnsRecords = [];
 
+    String status;
     DateTime activatedOn;
     DateTime createdOn;
     int developmentMode;
@@ -33,6 +36,7 @@ class DnsZone {
     String name;
     String originalDnshost;
     List<String> originalNameServers;
+    List<String> nameServers;
     String originalRegistrar;
 
     factory DnsZone.fromJson(Map<String, dynamic> json) => DnsZone(
@@ -42,9 +46,11 @@ class DnsZone {
         id: json["id"],
         modifiedOn: DateTime.parse(json["modified_on"]),
         name: json["name"],
-        originalDnshost: json["original_dnshost"],
+        originalDnshost: json["original_dnshost"].toString(),
         originalNameServers: List<String>.from(json["original_name_servers"].map((x) => x)),
-        originalRegistrar: json["original_registrar"],
+        nameServers: List<String>.from(json["name_servers"].map((x) => x)),
+        originalRegistrar: json["original_registrar"], 
+        status: json["status"],
     );
 
     Map<String, dynamic> toJson() => {
@@ -56,6 +62,8 @@ class DnsZone {
         "name": name,
         "original_dnshost": originalDnshost,
         "original_name_servers": List<dynamic>.from(originalNameServers.map((x) => x)),
+        "name_servers": List<dynamic>.from(nameServers.map((x) => x)),
         "original_registrar": originalRegistrar,
+        "status": status,
     };
 }

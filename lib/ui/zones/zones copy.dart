@@ -1,48 +1,30 @@
-import 'package:cloudflare/domain/models/dns_record.dart';
 import 'package:flutter/material.dart';
 
+import '../../data/api_dns_records.dart';
+import '../../data/api_zones.dart';
 import '../../data/secure_storage.dart';
 import '../../domain/models/dns_zone.dart';
 import '../../services/services.dart';
+import '../../utils.dart';
 import '../drawer/drawer.dart';
 
-class DnsRecordView extends StatefulWidget {
-
+class DNSZones extends StatefulWidget {
   final DnsZone activeZone;
-
-  const DnsRecordView({Key? key, required this.activeZone}) : super(key: key);
+  const DNSZones({Key? key, required this.activeZone}) : super(key: key);
 
   @override
-  State<DnsRecordView> createState() => _DnsRecordViewState();
+  State<DNSZones> createState() => _DNSZonesState();
 }
 
-class _DnsRecordViewState extends State<DnsRecordView> {
+class _DNSZonesState extends State<DNSZones> {
+  String title = 'DNS Zones';
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text(widget.activeZone.name),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.add),
-              onPressed: () {
-                Navigator.pushReplacementNamed(context, pageRoutes.newDnsRecord);
-                // ScaffoldMessenger.of(context).showSnackBar(
-                //     const SnackBar(content: Text('This is a snackbar')));
-              },
-            ),
-            IconButton(
-              icon: const Icon(Icons.arrow_back),
-              onPressed: () {
-                // Navigator.pushReplacementNamed(context, pageRoutes.home );
-                Navigator.popAndPushNamed(context, pageRoutes.home);
-                // ScaffoldMessenger.of(context).showSnackBar(
-                //     const SnackBar(content: Text('This is a snackbar')));
-              },
-            ),
-          ],
+          title: Text(title),
         ),
         drawer: cloudflareDrawer(context),
         body: SingleChildScrollView(
@@ -53,7 +35,7 @@ class _DnsRecordViewState extends State<DnsRecordView> {
                 List<Widget> widgetList;
 
                 if (snapshot.hasData) {
-                  widgetList = dnsRecordTiles(widget.activeZone);
+                  widgetList = dnsZoneTiles(snapshot, context, widget.activeZone);
 
                   widgetList.add(Container(
                       padding: const EdgeInsets.fromLTRB(30, 20, 30, 10)));
@@ -99,19 +81,31 @@ class _DnsRecordViewState extends State<DnsRecordView> {
   }
 }
 
-
-dnsRecordTiles(DnsZone activeZoneModel ) {
+dnsZoneTiles(snapshot, BuildContext context, DnsZone activeZoneModel) {
   List<Widget> widgetList = <Widget>[];
 
-  for (DnsRecord item in activeZoneModel.dnsRecords) {
+  for (var item in snapshot.data) {
     widgetList.add(
       ListTile(
-        leading: Text(item.type),
         title: Text(item.name),
-        subtitle: (item.type == 'MX')
-            ? Text("${item.name} ${item.content}")
-            : Text(item.content),
-        onTap: () async {},
+        leading: Icon(
+          Icons.dns,
+          size: 20.0,
+          color: (item.status == "active")
+              ? cloudflareColors.activeIcon
+              : cloudflareColors.noActiveIcon,
+        ),
+        onTap: () async {
+          activeZoneModel = item;
+
+          CloudflareDnsRecords cloudflareDnsRecords =
+              CloudflareDnsRecords(activeZoneModel: activeZoneModel);
+
+          await cloudflareDnsRecords.getDnsRecords();
+
+          // ignore: use_build_context_synchronously
+          Navigator.pushReplacementNamed(context, pageRoutes.dnsRecords);
+        },
       ),
     );
   }
@@ -119,13 +113,13 @@ dnsRecordTiles(DnsZone activeZoneModel ) {
   if (widgetList.isEmpty) {
     return [
       const Icon(
-        Icons.forward,
+        Icons.error_outline,
         color: Colors.red,
         size: 60,
       ),
       const Padding(
         padding: EdgeInsets.only(top: 16),
-        child: Text('Not exist any Records for this DNS Zone'),
+        child: Text('Not exist any DNS Zone Records'),
       )
     ];
   } else {
@@ -133,6 +127,15 @@ dnsRecordTiles(DnsZone activeZoneModel ) {
   }
 }
 
+
+
 Future getProjectDetails() async {
-  return await tokenDefined();
+  cloudflareZones.zones = [];
+  if (await tokenDefined()) {
+    List<DNSZones> zones = await cloudflareZones.getZones();
+    return zones;
+  } else {
+    // Return empty Dns Zone list
+    return cloudflareZones.zones;
+  }
 }

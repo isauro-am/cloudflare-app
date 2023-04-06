@@ -1,9 +1,10 @@
-import 'dart:io';
 import 'dart:convert';
+import 'dart:io';
+
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
 
-import 'services.dart';
+import 'secure_storage.dart';
 
 class HttpRequest {
   var client = http.Client();
@@ -61,15 +62,9 @@ dynamic validarResponse(Response response) {
 
 dynamic setHeaders() async {
   dynamic headers = {
-    "Content-Type": "application/x-www-form-urlencoded",
-  };
-
-  headers = {'Content-Type': 'application/json; charset=UTF-8'};
-
-  /* dynamic headers = {
-    "Content-Type": "application/json; charset=UTF-8",
+    'Content-Type': 'application/json; charset=UTF-8',
     "Accept": "application/json"
-  }; */
+  };
 
   String bearer = '';
   try {
@@ -82,7 +77,7 @@ dynamic setHeaders() async {
 }
 
 void validSesion(dynamic response) {
-  print("Token deleted");
+  // print("Token deleted from secure storage because of: ${response.statusCode}");
   response = jsonDecode(response.body);
   sotoreSecureData.delData("token");
 }

@@ -6,7 +6,8 @@ import 'package:flutter/services.dart';
 
 import 'services/services.dart';
 import 'ui/dns_records/new_record.dart';
-import 'ui/settings/account.dart';
+import 'ui/settings/set_token.dart';
+import 'ui/zones/zones.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,14 +37,15 @@ class MyApp extends StatelessWidget {
 
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.orange,
       ),
       initialRoute: pageRoutes.account,
       routes: {
         // pageRoutes.home: (context) => const Home(),
-        pageRoutes.account: (context) => const CreateAccount(),
+        pageRoutes.account: (_) => const SetToken(),
+        pageRoutes.home: (_) => const DNSZones(),
         // pageRoutes.dnsRecords: (context) => const DnsRecordView(),
-        pageRoutes.newDnsRecord: (context) => const NewDnsRecord()
+        pageRoutes.newDnsRecord: (_) => const NewDnsRecord()
       },
     );
   }
