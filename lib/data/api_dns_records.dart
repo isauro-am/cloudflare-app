@@ -1,3 +1,5 @@
+import 'package:cloudflare/domain/models/utils.dart';
+
 import '../domain/models/dns_record.dart';
 import '../domain/models/dns_zone.dart';
 import '../services/services.dart';
@@ -37,7 +39,9 @@ class CloudflareDnsRecords {
           'created_on': element['created_on'],
           'modified_on': element['modified_on'],
         });
-        activeZoneModel.dnsRecords.add(tmpZoneModel);
+        if(dnsRecordTypes.contains(element['type'])) {
+          activeZoneModel.dnsRecords.add(tmpZoneModel);
+        }
       }
     }
     return activeZoneModel.dnsRecords;

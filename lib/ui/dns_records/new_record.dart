@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../domain/models/dns_record.dart';
+import '../../domain/models/utils.dart';
 import '../drawer/drawer.dart';
 
 class NewDnsRecord extends StatefulWidget {
@@ -11,18 +12,22 @@ class NewDnsRecord extends StatefulWidget {
 }
 
 class _NewDnsRecordState extends State<NewDnsRecord> {
+
   DnsRecord newDnsRecord = DnsRecord.fromJson({
+    "id": "0",
+    "zone_id": "",
     "zone_name": "",
     "name": "",
     "type": "A",
     "content": "",
     "proxiable": true,
     "proxied": true,
-    "ttl": 1,
-    "created_on": "",
-    "modified_on": "",
+    "ttl": 900,
+    "created_on": "${DateTime.now()}",
+    "modified_on": "${DateTime.now()}",
     "priority": 10,
   });
+
 
   @override
   Widget build(BuildContext context) {
@@ -49,28 +54,7 @@ class _NewDnsRecordState extends State<NewDnsRecord> {
                   newDnsRecord.type = newValue!;
                 });
               },
-              items: <String>[
-                'A',
-                // 'AAAA',
-                // 'CAA',
-                // 'CERT',
-                'CNAME',
-                // 'DNSKEY',
-                // 'DS',
-                // 'HTTPS',
-                // 'LOC',
-                'MX',
-                // 'NAPTR',
-                'NS',
-                'PTR',
-                // 'SMIMEA',
-                'SPF',
-                // 'SRV',
-                // 'SVCB',
-                'TLSA',
-                'TXT',
-                // 'URI',
-              ].map<DropdownMenuItem<String>>((String value) {
+              items: dnsRecordTypes.values.map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
                   child: Text(value),

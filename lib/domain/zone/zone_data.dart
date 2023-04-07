@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../../colors.dart';
 import '../../data/api_dns_records.dart';
 import '../../data/api_zones.dart';
 import '../../data/secure_storage.dart';
 import '../../ui/dns_records/records.dart';
-import '../../utils.dart';
 import '../models/dns_zone.dart';
 
 dnsZoneTiles(snapshot, BuildContext context) {

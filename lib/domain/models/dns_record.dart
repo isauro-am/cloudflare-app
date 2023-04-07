@@ -21,6 +21,7 @@ class DnsRecord {
         required this.ttl,
         required this.createdOn,
         required this.modifiedOn,
+        required this.priority,
     });
 
     String content;
@@ -34,6 +35,7 @@ class DnsRecord {
     int ttl;
     String zoneId;
     String zoneName;
+    int priority;
 
     factory DnsRecord.fromJson(Map<String, dynamic> json) => DnsRecord(
         content: json["content"],
@@ -45,6 +47,7 @@ class DnsRecord {
         modifiedOn: DateTime.parse(json["modified_on"]),
         proxiable: json["proxiable"],
         ttl: json["ttl"],
+        priority: json["priority"],
         zoneId: json["zone_id"],
         zoneName: json["zone_name"],
     );
@@ -61,6 +64,7 @@ class DnsRecord {
         "ttl": ttl,
         "zone_id": zoneId,
         "zone_name": zoneName,
+        "priority": priority
     };
 }
 

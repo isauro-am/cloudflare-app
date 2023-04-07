@@ -1,7 +1,6 @@
 import '../data/endpoints.dart';
-import '../ui/drawer/drawer.dart';
-import '../utils.dart';
 import '../data/request.dart';
+import '../ui/drawer/drawer.dart';
 
 // SecureStorage
 
@@ -16,6 +15,3 @@ PageRoutes pageRoutes = PageRoutes();
 
 
 // Colors
-
-// Messages
-SnackBarMessages snackBarMessages = SnackBarMessages();
