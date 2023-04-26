@@ -4,14 +4,14 @@ class CloudflareColors {
   CloudflareColors._();
 
   // Cloudflare base colors
-  static const Color cfPrimary = Color.fromARGB(255, 224, 109, 16);
-  static const Color cfSecondary = Color.fromARGB(255, 244, 161, 93);
+  static const Color cfPrimary = Color(0xFFE06A0B);
+  static const Color cfSecondary = Color(0xFFF4A15D);
 
   // Custom colors
-  static const Color isOn = Color.fromARGB(255, 57, 133, 87);
-  static const Color enabled = Color.fromARGB(255, 224, 109, 16);
-  static const Color disabled = Color.fromARGB(255, 156, 143, 127);
-  static const Color error = Color.fromARGB(255, 160, 28, 50);
+  static const Color isOn = Color(0xFF398557);
+  static const Color enabled = Color(0xFFE06D10);
+  static const Color disabled = Color(0xFF9C8F7F);
+  static const Color error = Color(0xFFA01C32);
 
   static const Color lightGray = Color(0xFFf1f2f6);
   static const Color gray = Color(0xFFa5b1c2);
