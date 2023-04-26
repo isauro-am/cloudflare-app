@@ -9,35 +9,35 @@ DnsRecord dnsRecordFromJson(String str) => DnsRecord.fromJson(json.decode(str));
 String dnsRecordToJson(DnsRecord data) => json.encode(data.toJson());
 
 class DnsRecord {
-    DnsRecord({
-        required this.id,
-        required this.zoneId,
-        required this.zoneName,
-        required this.name,
-        required this.type,
-        required this.content,
-        required this.proxiable,
-        required this.proxied,
-        required this.ttl,
-        required this.createdOn,
-        required this.modifiedOn,
-        required this.priority,
-    });
+  DnsRecord({
+    required this.id,
+    required this.zoneId,
+    required this.zoneName,
+    required this.name,
+    required this.type,
+    required this.content,
+    required this.proxiable,
+    required this.proxied,
+    required this.ttl,
+    required this.createdOn,
+    required this.modifiedOn,
+    required this.priority,
+  });
 
-    String content;
-    String name;
-    bool proxied;
-    String type;
-    DateTime createdOn;
-    String id;
-    DateTime modifiedOn;
-    bool proxiable;
-    int ttl;
-    String zoneId;
-    String zoneName;
-    int priority;
+  String content;
+  String name;
+  bool proxied;
+  String type;
+  DateTime createdOn;
+  String id;
+  DateTime modifiedOn;
+  bool proxiable;
+  int ttl;
+  String zoneId;
+  String zoneName;
+  int priority;
 
-    factory DnsRecord.fromJson(Map<String, dynamic> json) => DnsRecord(
+  factory DnsRecord.fromJson(Map<String, dynamic> json) => DnsRecord(
         content: json["content"],
         name: json["name"],
         proxied: json["proxied"],
@@ -50,9 +50,9 @@ class DnsRecord {
         priority: json["priority"],
         zoneId: json["zone_id"],
         zoneName: json["zone_name"],
-    );
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "content": content,
         "name": name,
         "proxied": proxied,
@@ -65,25 +65,25 @@ class DnsRecord {
         "zone_id": zoneId,
         "zone_name": zoneName,
         "priority": priority
-    };
+      };
 }
 
 class Meta {
-    Meta({
-        required this.autoAdded,
-        required this.source,
-    });
+  Meta({
+    required this.autoAdded,
+    required this.source,
+  });
 
-    bool autoAdded;
-    String source;
+  bool autoAdded;
+  String source;
 
-    factory Meta.fromJson(Map<String, dynamic> json) => Meta(
+  factory Meta.fromJson(Map<String, dynamic> json) => Meta(
         autoAdded: json["auto_added"],
         source: json["source"],
-    );
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "auto_added": autoAdded,
         "source": source,
-    };
+      };
 }

@@ -1,11 +1,10 @@
-
 import 'package:flutter/material.dart';
 
 import '../../data/secure_storage.dart';
 import '../models/dns_record.dart';
 import '../models/dns_zone.dart';
 
-dnsRecordTiles(DnsZone activeZoneModel ) {
+dnsRecordTiles(DnsZone activeZoneModel) {
   List<Widget> widgetList = <Widget>[];
 
   for (DnsRecord item in activeZoneModel.dnsRecords) {

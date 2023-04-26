@@ -7,7 +7,6 @@ import '../../services/services.dart';
 import '../drawer/drawer.dart';
 
 class DnsRecordView extends StatefulWidget {
-
   final DnsZone activeZone;
 
   const DnsRecordView({Key? key, required this.activeZone}) : super(key: key);
@@ -17,7 +16,6 @@ class DnsRecordView extends StatefulWidget {
 }
 
 class _DnsRecordViewState extends State<DnsRecordView> {
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -28,7 +26,8 @@ class _DnsRecordViewState extends State<DnsRecordView> {
             IconButton(
               icon: const Icon(Icons.add),
               onPressed: () {
-                Navigator.pushReplacementNamed(context, pageRoutes.newDnsRecord);
+                Navigator.pushReplacementNamed(
+                    context, pageRoutes.newDnsRecord);
                 // ScaffoldMessenger.of(context).showSnackBar(
                 //     const SnackBar(content: Text('This is a snackbar')));
               },
@@ -98,4 +97,3 @@ class _DnsRecordViewState extends State<DnsRecordView> {
     );
   }
 }
-

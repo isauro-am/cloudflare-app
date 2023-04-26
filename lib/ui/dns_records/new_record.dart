@@ -12,7 +12,6 @@ class NewDnsRecord extends StatefulWidget {
 }
 
 class _NewDnsRecordState extends State<NewDnsRecord> {
-
   DnsRecord newDnsRecord = DnsRecord.fromJson({
     "id": "0",
     "zone_id": "",
@@ -27,7 +26,6 @@ class _NewDnsRecordState extends State<NewDnsRecord> {
     "modified_on": "${DateTime.now()}",
     "priority": 10,
   });
-
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +52,8 @@ class _NewDnsRecordState extends State<NewDnsRecord> {
                   newDnsRecord.type = newValue!;
                 });
               },
-              items: dnsRecordTypes.values.map<DropdownMenuItem<String>>((String value) {
+              items: dnsRecordTypes.values
+                  .map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
                   child: Text(value),

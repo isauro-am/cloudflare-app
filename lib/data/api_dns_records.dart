@@ -39,7 +39,7 @@ class CloudflareDnsRecords {
           'created_on': element['created_on'],
           'modified_on': element['modified_on'],
         });
-        if(dnsRecordTypes.contains(element['type'])) {
+        if (dnsRecordTypes.contains(element['type'])) {
           activeZoneModel.dnsRecords.add(tmpZoneModel);
         }
       }

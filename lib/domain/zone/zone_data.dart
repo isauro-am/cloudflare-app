@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../colors.dart';
+import '../../constants/colors.dart';
 import '../../data/api_dns_records.dart';
 import '../../data/api_zones.dart';
 import '../../data/secure_storage.dart';
@@ -18,8 +18,8 @@ dnsZoneTiles(snapshot, BuildContext context) {
           Icons.dns,
           size: 20.0,
           color: (item.status == "active")
-              ? cloudflareColors.activeIcon
-              : cloudflareColors.noActiveIcon,
+              ? CloudflareColors.activeIcon
+              : CloudflareColors.noActiveIcon,
         ),
         onTap: () async {
           CloudflareDnsRecords cloudflareDnsRecords =

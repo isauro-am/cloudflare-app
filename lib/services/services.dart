@@ -12,6 +12,3 @@ Endpoints cloudflareUrls = Endpoints();
 
 // Pages
 PageRoutes pageRoutes = PageRoutes();
-
-
-// Colors

@@ -4,7 +4,9 @@ import '../../domain/zone/zone_data.dart';
 import '../drawer/drawer.dart';
 
 class DNSZones extends StatefulWidget {
-  const DNSZones({Key? key,}) : super(key: key);
+  const DNSZones({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<DNSZones> createState() => _DNSZonesState();

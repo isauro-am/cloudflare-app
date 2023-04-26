@@ -4,10 +4,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'services/services.dart';
-import 'ui/dns_records/new_record.dart';
-import 'ui/settings/set_token.dart';
-import 'ui/zones/zones.dart';
+import 'constants/app_routes.dart';
+import 'constants/routes.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,7 +29,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-            debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false,
       scrollBehavior:
           MyCustomScrollBehavior(), // Custom Scroll Behavior for all scrollable widgets
 
@@ -39,14 +37,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
-      initialRoute: pageRoutes.account,
-      routes: {
-        // pageRoutes.home: (context) => const Home(),
-        pageRoutes.account: (_) => const SetToken(),
-        pageRoutes.home: (_) => const DNSZones(),
-        // pageRoutes.dnsRecords: (context) => const DnsRecordView(),
-        pageRoutes.newDnsRecord: (_) => const NewDnsRecord()
-      },
+      initialRoute: Routes.account,
+      routes: appRoutes,
     );
   }
 }

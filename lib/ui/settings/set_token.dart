@@ -70,8 +70,6 @@ class _SetTokenState extends State<SetToken> {
 
                     await sotoreSecureData.setData('token', tokenC.text);
 
-                    
-
                     var result = await cloudFlareToken.validate();
 
                     if (result == false) {
