@@ -41,7 +41,9 @@ class CloudflareZones {
           };
           DnsZone tmpZoneModel = DnsZone.fromJson(json);
           zones.add(tmpZoneModel);
-        } catch (e) {}
+        } catch (e) {
+          //
+        }
       }
     }
     return zones;

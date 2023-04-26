@@ -1,3 +1,4 @@
+import 'package:cloudflare/constants/navigation.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants/routes.dart';
@@ -25,10 +26,7 @@ cloudflareDrawer(BuildContext context) {
                     color: Colors.white,
                   ),
                   onTap: () {
-                    Navigator.pushReplacementNamed(context, Routes.home);
-                    /* Navigator.pop(context);
-                      Navigator.of(context).push(new MaterialPageRoute(
-                          builder: (context) => dealerBuilder()));*/
+                    AppNavigator.navigator(context, Routes.home);
                   },
                 ),
                 ListTile(
@@ -38,11 +36,7 @@ cloudflareDrawer(BuildContext context) {
                     size: 20.0,
                     color: Colors.white,
                   ),
-                  onTap: () {
-                    /*Navigator.pop(context);
-                      Navigator.of(context).push(new MaterialPageRoute(
-                          builder: (context) => shufflerBuilder()));*/
-                  },
+                  onTap: () {},
                 ),
                 ListTile(
                   title: drawerTextElement('DNS'),
@@ -51,11 +45,7 @@ cloudflareDrawer(BuildContext context) {
                     size: 20.0,
                     color: Colors.white,
                   ),
-                  onTap: () {
-                    /* Navigator.pop(context);
-                      Navigator.of(context).push(new MaterialPageRoute(
-                          builder: (context) => mistakePage()));*/
-                  },
+                  onTap: () {},
                 ),
               ],
             ),
@@ -68,10 +58,7 @@ cloudflareDrawer(BuildContext context) {
                   ListTile(
                       leading: const Icon(Icons.settings),
                       onTap: () {
-                        Navigator.pushReplacementNamed(context, Routes.account);
-                        /* Navigator.pop(context);
-                      Navigator.of(context).push(new MaterialPageRoute(
-                          builder: (context) => dealerBuilder()));*/
+                        AppNavigator.navigator(context, Routes.account);
                       },
                       title: const Text('Accounts')),
                   const ListTile(
