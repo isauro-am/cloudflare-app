@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
 
 class CloudflareColors {
+  CloudflareColors._();
+
   // Cloudflare base colors
-  static Color get cfPrimary => const Color.fromARGB(255, 224, 109, 16);
-  static Color get cfSecondary => const Color.fromARGB(255, 244, 161, 93);
+  static const Color cfPrimary = Color.fromARGB(255, 224, 109, 16);
+  static const Color cfSecondary = Color.fromARGB(255, 244, 161, 93);
 
   // Custom colors
-  static Color get blackBlue => const Color.fromARGB(255, 29, 31, 32);
-  static Color get green => const Color.fromARGB(255, 57, 133, 87);
-  static Color get activeIcon => const Color.fromARGB(255, 224, 109, 16);
-  static Color get noActiveIcon => const Color.fromARGB(255, 156, 143, 127);
-  static Color get redDark => const Color.fromARGB(255, 160, 28, 50);
-  static Color get red => const Color.fromARGB(255, 191, 34, 60);
-  static Color get redLight => const Color.fromARGB(255, 218, 48, 76);
+  static const Color isOn = Color.fromARGB(255, 57, 133, 87);
+  static const Color enabled = Color.fromARGB(255, 224, 109, 16);
+  static const Color disabled = Color.fromARGB(255, 156, 143, 127);
+  static const Color error = Color.fromARGB(255, 160, 28, 50);
+
+  static const Color lightGray = Color(0xFFf1f2f6);
+  static const Color gray = Color(0xFFa5b1c2);
+  static const Color darkGray = Color(0xFF535c68);
+
+  static const Color black = Color(0xFF000000);
+  static const Color white = Color(0xFFFFFFFF);
 }

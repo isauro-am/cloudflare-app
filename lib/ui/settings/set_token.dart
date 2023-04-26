@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../constants/routes.dart';
 import '../../data/api_validate_token.dart';
 import '../../data/secure_storage.dart';
-import '../../services/services.dart';
 import '../drawer/drawer.dart';
 
 class SetToken extends StatefulWidget {
@@ -86,7 +86,7 @@ class _SetTokenState extends State<SetToken> {
                           content: Text('Token is valid'),
                         ),
                       );
-                      Navigator.pushNamed(context, pageRoutes.home);
+                      Navigator.pushNamed(context, Routes.home);
                     }
                   },
                   child: const Text("Save")),

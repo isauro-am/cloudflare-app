@@ -18,8 +18,8 @@ dnsZoneTiles(snapshot, BuildContext context) {
           Icons.dns,
           size: 20.0,
           color: (item.status == "active")
-              ? CloudflareColors.activeIcon
-              : CloudflareColors.noActiveIcon,
+              ? CloudflareColors.enabled
+              : CloudflareColors.disabled,
         ),
         onTap: () async {
           CloudflareDnsRecords cloudflareDnsRecords =

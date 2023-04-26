@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../constants/routes.dart';
 import '../../data/secure_storage.dart';
 import '../../domain/dns_records/dns_records_data.dart';
 import '../../domain/models/dns_zone.dart';
-import '../../services/services.dart';
 import '../drawer/drawer.dart';
 
 class DnsRecordView extends StatefulWidget {
@@ -26,8 +26,7 @@ class _DnsRecordViewState extends State<DnsRecordView> {
             IconButton(
               icon: const Icon(Icons.add),
               onPressed: () {
-                Navigator.pushReplacementNamed(
-                    context, pageRoutes.newDnsRecord);
+                Navigator.pushReplacementNamed(context, Routes.newDnsRecord);
                 // ScaffoldMessenger.of(context).showSnackBar(
                 //     const SnackBar(content: Text('This is a snackbar')));
               },
@@ -35,8 +34,8 @@ class _DnsRecordViewState extends State<DnsRecordView> {
             IconButton(
               icon: const Icon(Icons.arrow_back),
               onPressed: () {
-                // Navigator.pushReplacementNamed(context, pageRoutes.home );
-                Navigator.popAndPushNamed(context, pageRoutes.home);
+                // Navigator.pushReplacementNamed(context, Routes.home );
+                Navigator.popAndPushNamed(context, Routes.home);
                 // ScaffoldMessenger.of(context).showSnackBar(
                 //     const SnackBar(content: Text('This is a snackbar')));
               },

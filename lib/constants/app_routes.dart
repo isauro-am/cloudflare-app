@@ -7,10 +7,10 @@ import 'routes.dart';
 
 Map<String, Widget Function(BuildContext)> get appRoutes {
   return {
-    // pageRoutes.home: (context) => const Home(),
+    // Routes.home: (context) => const Home(),
     Routes.account: (_) => const SetToken(),
     Routes.home: (_) => const DNSZones(),
-    // pageRoutes.dnsRecords: (context) => const DnsRecordView(),
+    // Routes.dnsRecords: (context) => const DnsRecordView(),
     Routes.newDnsRecord: (_) => const NewDnsRecord()
   };
 }

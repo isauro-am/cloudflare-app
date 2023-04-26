@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../services/services.dart';
+import '../../constants/routes.dart';
 
 drawerTextElement(String text) {
   return Text(text,
@@ -25,7 +25,7 @@ cloudflareDrawer(BuildContext context) {
                     color: Colors.white,
                   ),
                   onTap: () {
-                    Navigator.pushReplacementNamed(context, pageRoutes.home);
+                    Navigator.pushReplacementNamed(context, Routes.home);
                     /* Navigator.pop(context);
                       Navigator.of(context).push(new MaterialPageRoute(
                           builder: (context) => dealerBuilder()));*/
@@ -68,8 +68,7 @@ cloudflareDrawer(BuildContext context) {
                   ListTile(
                       leading: const Icon(Icons.settings),
                       onTap: () {
-                        Navigator.pushReplacementNamed(
-                            context, pageRoutes.account);
+                        Navigator.pushReplacementNamed(context, Routes.account);
                         /* Navigator.pop(context);
                       Navigator.of(context).push(new MaterialPageRoute(
                           builder: (context) => dealerBuilder()));*/
@@ -85,11 +84,4 @@ cloudflareDrawer(BuildContext context) {
       ),
     ),
   );
-}
-
-class PageRoutes {
-  String get home => "/";
-  String get account => "/account";
-  String get dnsRecords => "/dns_records";
-  String get newDnsRecord => "/new_dns_record";
 }
